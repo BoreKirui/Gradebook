@@ -1,0 +1,80 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.jGRASP.gradebook;
+
+import com.jGRASP.gradebook.Gradebook;
+
+/**
+ *
+ * @author syadmin-xkirui
+ */
+public class GradeBookTest {
+
+    // main method begins program execution
+
+    public static void main(String args[])// a main method
+    {
+        // two-dimensional array of student grades
+        int gradesArray1[][] = {{87, 96, 70, 65, 78},
+        {68, 87, 90, 75, 84},
+        {94, 60, 80, 87, 77},
+        {30, 51, 62, 45, 72},
+        {83, 65, 85, 67, 76},
+        {78, 87, 65, 77, 86},
+        {85, 75, 83, 88, 78},
+        {91, 94, 100, 92, 87},
+        {76, 72, 84, 77, 82},
+        {87, 93, 73, 77, 90}};
+        int gradesArray2[][] = {{87, 96, 70, 65, 78},
+        {68, 87, 70, 75, 84},
+        {64, 80, 50, 87, 77},
+        {70, 81, 82, 85, 92},
+        {83, 65, 85, 67, 76},
+        {78, 87, 65, 77, 86},
+        {85, 75, 83, 88, 78},
+        {61, 74, 80, 82, 57},
+        {76, 72, 84, 77, 82},
+        {87, 93, 73, 77, 90}};
+        int gradesArray[][] = {{87, 96, 70, 65, 78},
+        {68, 77, 60, 75, 64},
+        {94, 70, 70, 87, 77},
+        {90, 81, 82, 85, 92},
+        {83, 65, 85, 67, 76},
+        {78, 87, 65, 77, 86},
+        {85, 75, 83, 88, 78},
+        {71, 94, 60, 92, 87},
+        {76, 72, 84, 77, 82},
+        {87, 93, 73, 77, 90}};
+        
+        // String[] studentName =  {"Camilla", "Brettin", "Audrews", "Iancams","Camouly", "Betrice", "Welback", "Duncans","Maryann", "Jasmine"};
+        //String[] studentName1 =  {"Camilla", "Brettin", "Audrews", "Iancams","Camouly", "Betrice", "Welback", "Duncans","Maryann", "Jasmine"};
+        //String[] studentName2 =  {"Camilla", "Brettin", "Audrews", "Iancams","Camouly", "Betrice", "Welback", "Duncans","Maryann", "Jasmine"};
+        //objects of type gradebook
+        Gradebook myGradeBook = new Gradebook(
+                "Introduction to Java Programming", gradesArray);
+        Gradebook myGradeBook1 = new Gradebook(
+                "Data Structures and Algorithms", gradesArray1);
+        Gradebook myGradeBook2 = new Gradebook(
+                "Object Oriented Programming", gradesArray);
+
+        // display initial value of Assignment for each GradeBook
+        System.out.printf("GradeBook course name is: %s\n",
+                myGradeBook.getCourseName());
+
+        myGradeBook.processGrades();
+
+        System.out.printf("GradeBook1 course name is: %s\n",
+                myGradeBook1.getCourseName());
+        //myGradeBook1.displayMessage();
+        myGradeBook1.processGrades();
+
+        System.out.printf("GradeBook2 course name is: %s\n",
+                myGradeBook2.getCourseName());
+        //myGradeBook1.displayMessage();
+        myGradeBook2.processGrades();
+    } // end main
+} // end class GradeBookTest
+
