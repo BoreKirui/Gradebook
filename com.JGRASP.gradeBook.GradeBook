@@ -1,0 +1,128 @@
+package com.jGRASP.gradebook;
+
+/**
+ *
+ * @author BoreKirui
+ */
+public class Gradebook {
+    
+    
+    // The array holds ten student names.
+    private final String[] studentName=  {"Camilla", "Brettin", "Audrews", "Iancams","Camouly", "Betrice", "Welback", "Duncans","Maryann", "Jasmine"};
+    private String courseName; // name of course this grade book represents
+    private int grades[][]; // two-dimensional array of student grades
+    
+    /*
+     The getStudentName method returns the student's name.
+    */
+    public String[] getStudentName()
+    {
+       return  studentName;
+    }
+    
+    // method to set the course name
+    // two-argument constructor initializes courseName and grades array
+    public Gradebook(String name, int gradesArray[][]) {
+        courseName = name; // initialize courseName
+        grades = gradesArray; // store grades
+    } // end two-argument GradeBook constructor
+
+    // method to set the course name
+    public void setCourseName(String name) {
+        courseName = name; // store the course name
+    } // end method setCourseName
+
+    // method to retrieve the course name
+    public String getCourseName() {
+        return courseName;
+    } // end method getCourseName
+
+    // a method to display the gradebook
+    public void displayMessage() {
+        // getCourseName gets the name of the course
+        System.out.printf("Welcome to the grade book for:\n%s!\n\n",
+                getCourseName());
+    }
+
+    // perform various operations on the data
+    public void processGrades() {
+        // output grades array
+        outputGrades();
+    }
+
+    // a method to calculate the student's average
+    public double getAverage(int setOfGrades[]) {
+        int total = 0; // initialize total                  
+
+        // sum grades for one student                       
+        for (int grade : setOfGrades) {
+            total += grade;
+        }
+
+        // return average of grades                         
+        return (double) total / setOfGrades.length;
+    }
+
+    //letter grade for the courses
+    private char getGrades(char grade) {
+        int average = 0;
+
+        if (average >= 90) {
+            grade = 'A';
+        } else if (average >= 80) {
+            grade = 'B';
+        } else if (average >= 70) {
+            grade = 'C';
+        } else if (average >= 60) {
+            grade = 'D';
+        } else if (average < 60) {
+            grade = 'F';
+        }
+        return grade;
+    }
+
+    // output the contents of the grades array
+    public void outputGrades() {
+        System.out.println("The grades are:\n");
+        System.out.print("            "); // align column heads
+
+        // create a column heading for each of the tests
+        for (int test = 0; test < grades[0].length; test++) {
+            System.out.printf("Test %d ", test + 1);
+        }
+        //column for Grade  heading
+        System.out.print("\t Grade  ");
+        // student average column heading
+        System.out.println("Average");
+        System.out.print("------------------------------------------------------------------\n"); // align column heads
+        // create rows/columns of text representing array grades
+        for (int student = 0; student < grades.length; student++) {
+            System.out.printf(studentName[student]);
+
+            for (int test : grades[student]) // output student's grades
+            {
+                System.out.printf("%8d", test);
+            }
+
+            double average = getAverage(grades[student]);
+            char grade = 0;
+            if (grade < 0 || grade > 100) {
+                System.out.println("Invalid grade value! = " + grade);
+            } else if (average >= 90) {
+                System.out.printf("\t A");
+            } else if (average >= 80) {
+                System.out.printf("\t B");
+            } else if (average >= 70) {
+                System.out.printf("\t C");
+            } else if (average >= 60) {
+                System.out.printf("\t D");
+            } else {
+                System.out.printf("\t F");
+            }
+
+            System.out.printf("%9.2f\n", average);
+        } // end outer for
+    } // end method outputGrades
+
+} // end class GradeBook
+
